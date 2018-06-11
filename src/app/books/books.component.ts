@@ -8,12 +8,17 @@ import { Book } from '../../_models/book.model';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-  book: Book = {
+  books: Book[] = [{
     code: 'B001',
-    name: 'Book 1',
-    thumbnail: 'http://flavorwire.files.wordpress.com/2012/08/stand.jpg',
-    author: 'Author 1'
-  };
+    name: 'Object Oriented Programming with C++',
+    thumbnail: 'http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325975644.JPG',
+    author: 'Rohit Khurana'
+  }, {
+    code: 'B002',
+    name: 'Data Structures using C',
+    thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/51X%2Bh4njKZL._SX369_BO1,204,203,200_.jpg',
+    author: 'E Balaguruswamy'
+  }];
   constructor() { }
 
   ngOnInit() {
