@@ -24,4 +24,8 @@ export class BooksComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSelected(book: Book) {
+    console.log(book);
+  }
+
 }

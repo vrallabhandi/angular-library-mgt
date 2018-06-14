@@ -1,1 +1,1 @@
-<app-book *ngFor="let book of books" [book]="book"></app-book>
+<app-book *ngFor="let book of books" [book]="book" (selected)="onSelected($event)"></app-book>
