@@ -19,13 +19,15 @@ export class BooksComponent implements OnInit {
     thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/51X%2Bh4njKZL._SX369_BO1,204,203,200_.jpg',
     author: 'E Balaguruswamy'
   }];
+
+  selectedBook: Book;
   constructor() { }
 
   ngOnInit() {
   }
 
   onSelected(book: Book) {
-    console.log(book);
+    this.selectedBook = book;
   }
 
 }

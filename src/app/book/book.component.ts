@@ -9,6 +9,7 @@ import { Book } from '../../_models/book.model';
 })
 export class BookComponent implements OnInit {
   @Input() book: Book;
+
   @Output() selected: EventEmitter<Book> = new EventEmitter<Book>();
 
   constructor() { }

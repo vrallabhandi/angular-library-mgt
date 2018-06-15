@@ -1,1 +1,6 @@
-<app-book *ngFor="let book of books" [book]="book" (selected)="onSelected($event)"></app-book>
+<div class="row">
+    <app-book *ngFor="let book of books" [book]="book" (selected)="onSelected($event)"></app-book>
+</div>
+<div class="row col-sm-12">
+    <app-book-details [book]="selectedBook"></app-book-details>
+</div>
