@@ -1,6 +1,6 @@
 <div class="row">
     <app-book *ngFor="let book of books" [book]="book" (selected)="onSelected($event)"></app-book>
 </div>
-<div class="row col-sm-12">
+<div class="row col-sm-12" *ngIf="selectedBook">
     <app-book-details [book]="selectedBook"></app-book-details>
 </div>

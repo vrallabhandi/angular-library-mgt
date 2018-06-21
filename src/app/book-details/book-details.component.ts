@@ -12,12 +12,6 @@ export class BookDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.book = {
-      name: '',
-      author: '',
-      code: '',
-      thumbnail: ''
-    };
   }
 
 }
