@@ -1,5 +1,5 @@
 <div class="book-info">
-  <p>
+  <p [ngClass]="{ 'green': book.code === 'B001', 'blue': book.code === 'B002' }">
     Name: {{book.name}}
   </p>
   <p>
