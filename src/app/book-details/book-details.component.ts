@@ -14,4 +14,8 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  getBgColor(code) {
+    return code === 'B001' ? 'lightgreen' : 'lightblue';
+  }
+
 }

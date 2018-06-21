@@ -1,8 +1,8 @@
 <div class="book-info">
-  <p [ngClass]="{ 'green': book.code === 'B001', 'blue': book.code === 'B002' }">
+  <p [ngStyle]="{'background-color':book.code === 'B001' ? 'lightgreen' : 'lightblue' }">
     Name: {{book.name}}
   </p>
-  <p>
+  <p [ngStyle]="{ backgroundColor: getBgColor(book.code)}">
     Author: {{book.author}}
   </p>
   <p>
