@@ -8,6 +8,7 @@ import { BookComponent } from './book/book.component';
 import { BooksComponent } from './books/books.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { SelectedBookNameDirective } from './directives/selected-book-name.directive';
+import { HoverElementDirective } from './directives/hover-element.directive';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SelectedBookNameDirective } from './directives/selected-book-name.direc
     BookComponent,
     BooksComponent,
     BookDetailsComponent,
-    SelectedBookNameDirective
+    SelectedBookNameDirective,
+    HoverElementDirective
   ],
   imports: [
     BrowserModule,
