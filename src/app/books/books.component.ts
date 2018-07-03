@@ -15,7 +15,10 @@ export class BooksComponent implements OnInit {
   constructor(public booksService: BooksService) { }
 
   ngOnInit() {
-    this.books = this.booksService.getAllBooks();
+    this.booksService.getAllBooks()
+      .subscribe((books: Book[]) => {
+        this.books = books;
+      });
   }
 
   onSelected(book: Book) {
