@@ -9,6 +9,7 @@ import { BooksComponent } from './books/books.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { SelectedBookNameDirective } from './directives/selected-book-name.directive';
 import { HoverElementDirective } from './directives/hover-element.directive';
+import { BooksService } from './services/books.service';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { HoverElementDirective } from './directives/hover-element.directive';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    BooksService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
