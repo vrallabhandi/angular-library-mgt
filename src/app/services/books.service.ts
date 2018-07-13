@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+import 'rxjs/add/observable/of';
 
 import { Book } from '../../_models/book.model';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { environment } from '../../environments/environment';
+import { Response } from '@angular/http/src/static_response';
 
 const BOOKS: Book[] = [{
     code: 'B001',
@@ -18,7 +22,20 @@ const BOOKS: Book[] = [{
 
 @Injectable()
 export class BooksService {
-    getAllBooks(): Observable<Book[]> {
+
+    constructor(private http: Http) { }
+
+    getAllBooksServer(): Observable<Book[]> {
         return Observable.of(BOOKS.slice());
+    }
+
+    getAllBooks(): Observable<Book[]> {
+        return this.http.get(environment.baseUrl + 'books.json')
+            .pipe(
+            map((response: Response) => {
+                const books = response.json();
+                return <Book[]>books;
+            })
+            );
     }
 }
