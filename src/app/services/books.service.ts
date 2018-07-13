@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-
-import { Book } from '../../_models/book.model';
+import { AngularFireDatabase  } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+
+import { Book } from '../../_models/book.model';
 
 const BOOKS: Book[] = [{
     code: 'B001',
@@ -18,7 +19,13 @@ const BOOKS: Book[] = [{
 
 @Injectable()
 export class BooksService {
-    getAllBooks(): Observable<Book[]> {
+    constructor(private db: AngularFireDatabase) {}
+
+    getAllBooksServer(): Observable<Book[]> {
         return Observable.of(BOOKS.slice());
+    }
+
+    getAllBooks(): Observable<Book[]> {
+        return <Observable<Book[]>>this.db.list('/books').valueChanges();
     }
 }
