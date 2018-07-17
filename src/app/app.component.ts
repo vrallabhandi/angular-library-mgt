@@ -7,16 +7,16 @@ import { Book } from './models/book.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  book1: Book = {
-    code : 'B001',
-    name : 'PROGRAMMING WITH JAVA',
-    thumbnail : '../../assets/PROGRAMMING WITH JAVA.JPG',
-    author : 'Rohit Khurana'
-  }
-  book2: Book = {
-    code : 'B002',
-    name : 'PROGRAMMING IN C AND DATA STRUCTURES',
-    thumbnail : '../../assets/PROGRAMMING IN C.JPG',
-    author : 'DR. CHANDRAKANT NAIKODI'
-  }
+
+  books: Book[] = [{
+    code: 'B001',
+    name: 'PROGRAMMING WITH JAVA',
+    thumbnail: '../../assets/PROGRAMMING WITH JAVA.JPG',
+    author: 'Rohit Khurana'
+  }, {
+    code: 'B002',
+    name: 'PROGRAMMING IN C AND DATA STRUCTURES',
+    thumbnail: '../../assets/PROGRAMMING IN C.JPG',
+    author: 'DR. CHANDRAKANT NAIKODI'
+  }]
 }
