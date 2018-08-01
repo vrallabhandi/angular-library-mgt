@@ -7,7 +7,7 @@ import { Book } from './models/book.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  name: string = 'default value';
   books: Book[] = [{
     code: 'B001',
     name: 'PROGRAMMING WITH JAVA',
@@ -18,5 +18,13 @@ export class AppComponent {
     name: 'PROGRAMMING IN C AND DATA STRUCTURES',
     thumbnail: '../../assets/PROGRAMMING IN C.JPG',
     author: 'DR. CHANDRAKANT NAIKODI'
-  }]
+  }];
+
+  onBookSelected(data: Book){
+    console.log(data);
+  }
+
+  checkName(){
+    console.log(this.name);
+  }
 }
