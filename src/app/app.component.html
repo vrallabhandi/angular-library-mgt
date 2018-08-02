@@ -1,3 +1,6 @@
-<app-book></app-book>
-
-
+<input type="text" name="bookName" [(ngModel)]="name"/>
+<button name="mybutton" ng-click="checkName($event)">click me!</button>
+<label for="name">{{name}}</label>
+<div>
+        <app-book *ngFor = "let book of books" [book]="book" (selected)="OnBookSelected(book)"></app-book>
+</div>
