@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Book} from './models/book.model';
 
 @Component({
@@ -6,12 +6,16 @@ import {Book} from './models/book.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   //title = 'world of Angular';
+  name : string= "satish" ;
   books: Book[]
   constructor()
   {
-  this.books = [
+ 
+  }
+ ngOnInit() {
+   this.books = [
     {
     code:"B001",
     author:"Rohit Khurana",
@@ -20,7 +24,7 @@ export class AppComponent {
    },
   {
     code:"B002",
-    author:"Suresh Kancham Reddy",
+    author:"Suresh KanchamReddy",
     name:'Cracking the Coding Interview: 189 Programing Questions and Solutions',
     thumbnail: "https://images-na.ssl-images-amazon.com/images/I/51l5XzLln%2BL._SX348_BO1,204,203,200_.jpg"
 	}]
@@ -37,4 +41,13 @@ export class AppComponent {
 //     name:'Cracking the Coding Interview: 189 Programing Questions and Solutions',
 //     thumbnail: "https://images-na.ssl-images-amazon.com/images/I/51l5XzLln%2BL._SX348_BO1,204,203,200_.jpg"
 // 	}
+
+OnBookSelected(data: Book){
+  console.log(data);
+
+}
+
+  CheckName(){
+    console.log(this.name);
+}
 }

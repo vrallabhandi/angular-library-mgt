@@ -1,4 +1,7 @@
-<div *ngFor ="let book of books">
-<app-book  [book]="book"></app-book>
-</div>
+<input type="text" name="bookname" [(ngModel)]="name"/>
 
+<button (click)="CheckName()">Click Me!</button>
+{{name}}
+<div>
+    <app-book *ngFor = "let book of books" [book]="book" (selected)="OnBookSelected($event)"></app-book>
+</div>
