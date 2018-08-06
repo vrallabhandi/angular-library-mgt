@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit,ViewChild } from '@angular/core';
 import {Book} from './models/book.model';
 
 @Component({
@@ -6,9 +6,11 @@ import {Book} from './models/book.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit{
   //title = 'world of Angular';
+  @ViewChild('bName') bookName: ElementRef;
   name : string= "satish" ;
+  selectedBook: Book;
   books: Book[]
   constructor()
   {
@@ -43,11 +45,11 @@ export class AppComponent implements OnInit {
 // 	}
 
 OnBookSelected(data: Book){
-  console.log(data);
+  this.selectedBook = data;
 
 }
 
-  CheckName(){
-    console.log(this.name);
+  CheckName(element : HTMLInputElement){
+    console.log(element.value);
 }
 }
