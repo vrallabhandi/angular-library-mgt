@@ -12,6 +12,7 @@ export class BooksComponent implements OnInit {
   books: Book[];
 
   selectedBook: Book;
+  searchText: string;
   constructor(public booksService: BooksService) { }
 
   ngOnInit() {

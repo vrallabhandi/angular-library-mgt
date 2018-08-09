@@ -1,5 +1,20 @@
+<div class="row margin-top-20">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText" />
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<hr>
 <div class="row">
-    <app-book *ngFor="let book of books" [book]="book" (selected)="onSelected($event)"></app-book>
+    <app-book *ngFor="let book of books | bookFilter: searchText" [book]="book" (selected)="onSelected($event)"></app-book>
 </div>
 <div class="row col-sm-12" *ngIf="selectedBook">
     <app-book-details [book]="selectedBook"></app-book-details>

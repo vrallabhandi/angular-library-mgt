@@ -10,6 +10,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { SelectedBookNameDirective } from './directives/selected-book-name.directive';
 import { HoverElementDirective } from './directives/hover-element.directive';
 import { BooksService } from './services/books.service';
+import { BookFilterPipe } from './pipes/book-filter/book-filter.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { BooksService } from './services/books.service';
     BooksComponent,
     BookDetailsComponent,
     SelectedBookNameDirective,
-    HoverElementDirective
+    HoverElementDirective,
+    BookFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -25,10 +25,6 @@ export class BooksService {
 
     constructor(private http: Http) { }
 
-    getAllBooksServer(): Observable<Book[]> {
-        return Observable.of(BOOKS.slice());
-    }
-
     getAllBooks(): Observable<Book[]> {
         return this.http.get(environment.baseUrl + 'books.json')
             .pipe(
