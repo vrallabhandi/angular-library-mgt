@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Book } from '../../_models/book.model';
 import { BooksService } from '../services/books.service';
+import { BookFilterPipe } from '../pipes/book-filter/book-filter.pipe';
 
 @Component({
   selector: 'app-books',
@@ -13,17 +14,27 @@ export class BooksComponent implements OnInit {
 
   selectedBook: Book;
   searchText: string;
-  constructor(public booksService: BooksService) { }
+
+  private allBooks: Book[];
+  constructor(
+    public booksService: BooksService,
+    public bookFilterPipe: BookFilterPipe
+  ) { }
 
   ngOnInit() {
     this.booksService.getAllBooks()
       .subscribe((books: Book[]) => {
         this.books = books;
+        this.allBooks = books;
       });
   }
 
   onSelected(book: Book) {
     this.selectedBook = book;
+  }
+
+  filterBooks() {
+    this.books = this.bookFilterPipe.transform(this.allBooks, this.searchText);
   }
 
 }

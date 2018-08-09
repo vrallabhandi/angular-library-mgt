@@ -29,7 +29,8 @@ import { BookFilterPipe } from './pipes/book-filter/book-filter.pipe';
     HttpModule
   ],
   providers: [
-    BooksService
+    BooksService,
+    BookFilterPipe
   ],
   bootstrap: [AppComponent]
 })
