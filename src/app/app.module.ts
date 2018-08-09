@@ -11,6 +11,7 @@ import { SelectedBookNameDirective } from './directives/selected-book-name.direc
 import { HoverElementDirective } from './directives/hover-element.directive';
 import { BooksService } from './services/books.service';
 import { BookFilterPipe } from './pipes/book-filter/book-filter.pipe';
+import { ShortenPipe } from './pipes/shorten/shorten.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { BookFilterPipe } from './pipes/book-filter/book-filter.pipe';
     BookDetailsComponent,
     SelectedBookNameDirective,
     HoverElementDirective,
-    BookFilterPipe
+    BookFilterPipe,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,

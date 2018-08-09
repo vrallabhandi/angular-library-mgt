@@ -1,6 +1,6 @@
 <div class="book-info">
   <p appSelectedBookName [code]="book.code">
-    Name: {{book.name}}
+    Name: {{book.name | shorten: 5}}
   </p>
   <p appHoverElement>
     Author: {{book.author}}
