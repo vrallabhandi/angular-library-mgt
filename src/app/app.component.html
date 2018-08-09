@@ -1,6 +1,20 @@
-<input type="text" name="bookName" [(ngModel)]="name"/>
-<button name="mybutton" ng-click="checkName($event)">click me!</button>
+<input type="text" name="bookName" [(ngModel)]="name" #bName/>
+<button name="mybutton" (click)="checkName(bName)">click me!</button>
 <label for="name">{{name}}</label>
+<div class="row">
+   <app-book *ngFor = "let book of books" [book]="book" (selected)="OnBookSelected(book)"></app-book>
+  <!--  <option value="" disabled selected>select country</option>
+    <app-country *ngFor = "let country of countries" [country]="country" (countryselected)="OnCountrySelected(country)"></app-country>
+    <option value="" disabled selected>select state</option>
+    <app-state *ngFor = "let state of states" [state]="state" [country]="selectedCountry" (stateselected)="OnStateSelected(state)"></app-state>
+    <option value="" disabled selected>select city</option>
+    <app-city *ngFor = "let city of cities" [city]="city" [state]="selectedState" (cityselected)="OnCitySelected(city)"></app-city>-->
+    
+    
+</div>
+
 <div>
-        <app-book *ngFor = "let book of books" [book]="book" (selected)="OnBookSelected(book)"></app-book>
+    <app-selected-book [book]="selectedBook" *ngIf="selectedBook" >
+        <p>This is some nested content</p>
+    </app-selected-book>
 </div>

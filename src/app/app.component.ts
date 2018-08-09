@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Book } from './models/book.model';
+import { Country } from './models/country.model';
+import { State } from './models/state.model';
+import { City } from './models/city.model';
+import { BooksService } from './services/books.service';
 
 
 @Component({
@@ -7,41 +11,74 @@ import { Book } from './models/book.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-name: string = 'default value'
-  
-    books: Book[] = [
-      {
-        code: "B001",
-        author: "Rohit",
-        name: "C++",
-        thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325975644.jpg"
-      },
-      {
-        code: "B002",
-        author: "Lee Chao",
-        name: "Networking",
-        thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9781420091595.jpg"
-      },
-      {
-        code: "B003",
-        author: "Ashok Arora",
-        name: "Computer Fundamentals",
-        thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325992276.jpg"
-      },
-      {
-        code: "B004",
-        author: "Bel",
-        name: "Information Security",
-        thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9781420078541.jpg"
-      }
-    ];
-  
-    OnBookSelected(data: Book) {
-      console.log(data);
-    }
+export class AppComponent implements OnInit {
+  @ViewChild('bName') bookName: ElementRef;
+  name: string = 'default value'
+  selectedBook: Book;
+  selectedCountry: Country;
+  selectedState: State;
+  selectedCity: City;
+  books: any;
 
-    checkName(data: any) {
-      console.log(this.name);
-    }
+  constructor(private booksService: BooksService) {}
+
+  ngOnInit() {
+    this.booksService.getBooks()
+    .subscribe(
+      (books: Book[]) => {
+        this.books = books;
+      }, (err: any) => {
+        console.log(err);
+      })
+      };   
+    
+  
+  countries: Country[] = [
+    { name: "USA" },
+    { name: "India" }    
+  ];
+
+  states: State[] = [
+    { name: "California", countrtName: "USA" },
+    { name: "Florida", countrtName: "USA" },
+    { name: "Telangana", countrtName: "India" },
+    { name: "Andhra Pradesh", countrtName: "India"}
+  ];
+
+  cities: City[] = [
+    { name: "Los Angeles", statetName: "California"},
+    { name: "San Francisco", statetName: "California"},
+    { name: "Miami", statetName: "Florida"},
+    { name: "Tampa", statetName: "Florida"},
+    { name: "Hyderabad", statetName: "Telangana"},
+    { name: "Secundrabad", statetName: "Telangana"},
+    { name: "Vijayawada", statetName: "Andhra Pradesh"},
+    { name: "Vizag", statetName: "Andhra Pradesh"}
+  ]
+
+ 
+
+  OnBookSelected(data: Book) {    
+    this.selectedBook = data;
+    console.log(this.bookName.nativeElement.value);
   }
+
+  checkName(element: HTMLInputElement) {
+    console.log(element.value);
+  }
+
+  OnCountrySelected(data: Country) {
+    this.selectedCountry = data;
+    console.log(data.name);
+  }
+
+  OnStateSelected(data: State) {
+    this.selectedState = data;
+    console.log(data.name);
+  }
+
+  OnCitySelected(data: City) {
+    this.selectedCity = data;
+    console.log(data.name);
+  }
+}
