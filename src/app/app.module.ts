@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
 import { SelectedBookComponent } from './selected-book/selected-book.component';
 import { HighlighterDirective } from './directives/highlighter/highlighter.directive';
+import { HoverElementDirective } from './directives/hover-element/hover-element.directive';
+import { BooksService } from './services/books.service';
 
 
 @NgModule({
@@ -14,13 +16,14 @@ import { HighlighterDirective } from './directives/highlighter/highlighter.direc
     AppComponent,
     BookComponent,
     SelectedBookComponent,
-    HighlighterDirective
+    HighlighterDirective,
+    HoverElementDirective
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

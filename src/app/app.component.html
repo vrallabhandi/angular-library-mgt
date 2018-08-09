@@ -1,10 +1,10 @@
 <input type="text" name="bookName" [(ngModel)]="name" #bName/>
-<button (click) = "checkName(bName)">Click Me!</button>
+<button (click)="checkName(bName)">Click Me!</button>
 <div class="row">
   <app-book *ngFor="let book of books" [book]="book" (selected)="onBookSelected($event)"></app-book>
 </div>
 <div class="row">
-  <app-selected-book [book] = "selectedBook" *ngIf="selectedBook">
-
+  <app-selected-book [book]="selectedBook" *ngIf="selectedBook">
+    <p>This is the example of ng content</p>
   </app-selected-book>
 </div>
