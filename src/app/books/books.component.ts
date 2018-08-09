@@ -37,4 +37,13 @@ export class BooksComponent implements OnInit {
     this.books = this.bookFilterPipe.transform(this.allBooks, this.searchText);
   }
 
+  addNewBook() {
+    this.books.push({
+      code: 'CODE',
+      name: 'Object Oriented Programming with C++',
+      author: 'New book author',
+      thumbnail: 'http://via.placeholder.com/200x270'
+    });
+  }
+
 }

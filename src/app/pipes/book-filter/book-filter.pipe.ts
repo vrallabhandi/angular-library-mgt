@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Book } from '../../../_models/book.model';
 
 @Pipe({
-  name: 'bookFilter'
+  name: 'bookFilter',
+  pure: false
 })
 export class BookFilterPipe implements PipeTransform {
 
