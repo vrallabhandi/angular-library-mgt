@@ -6,7 +6,6 @@ import 'rxjs/add/observable/of';
 
 import { Book } from '../../_models/book.model';
 import { environment } from '../../environments/environment';
-import { Response } from '@angular/http/src/static_response';
 import { urls } from '../constants/urls.constant';
 
 const BOOKS: Book[] = [{
