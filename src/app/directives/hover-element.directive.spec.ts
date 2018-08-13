@@ -12,7 +12,7 @@ import { HoverElementDirective } from './hover-element.directive';
 })
 class TestHoverFocusComponent { }
 
-fdescribe('HoverElementDirective', () => {
+describe('HoverElementDirective', () => {
   let fixture: ComponentFixture<TestHoverFocusComponent>;
   let pTag: DebugElement;
 
