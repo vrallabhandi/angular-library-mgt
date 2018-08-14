@@ -1,5 +1,28 @@
-<input type="text" name="bookName" [(ngModel)]="name" #bName/>
-<button (click)="checkName(bName)">Click Me!</button>
+<!-- <div class="row">
+  <input type="text" name="bookName" [(ngModel)]="name" #bName/>
+  <button (click)="checkName(bName)">Click Me!</button>
+</div> -->
+<!-- <div class="row">
+  Pipes
+  {{name | uppercase}}
+  {{date | date: 'longDate' | uppercase}}
+</div> -->
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div class="input-group">
+      <input type="text" class="form-control" [(ngModel)]="filterText" />
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-primary" (click)="filterBooks()">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<hr>
 <div class="row">
   <app-book *ngFor="let book of books" [book]="book" (selected)="onBookSelected($event)"></app-book>
 </div>

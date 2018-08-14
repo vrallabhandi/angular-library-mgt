@@ -9,6 +9,8 @@ import { SelectedBookComponent } from './selected-book/selected-book.component';
 import { HighlighterDirective } from './directives/highlighter/highlighter.directive';
 import { HoverElementDirective } from './directives/hover-element/hover-element.directive';
 import { BooksService } from './services/books.service';
+import { ShortenPipe } from './pipes/shorten/shorten.pipe';
+import { FilterPipe } from './pipes/filter/filter.pipe';
 
 
 @NgModule({
@@ -17,13 +19,15 @@ import { BooksService } from './services/books.service';
     BookComponent,
     SelectedBookComponent,
     HighlighterDirective,
-    HoverElementDirective
+    HoverElementDirective,
+    ShortenPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [BooksService],
+  providers: [BooksService, FilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
