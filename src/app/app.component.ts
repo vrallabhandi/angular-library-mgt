@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { Book } from './models/book.model';
 import { BooksService } from './services/books.service';
 import { FilterPipe } from './pipes/filter/filter.pipe';
@@ -8,7 +8,7 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   @ViewChild('bName') bookName: ElementRef;
   selectedBook: Book;
   name: string = 'default value';
@@ -26,8 +26,15 @@ export class AppComponent {
 
   ngOnInit(){
     this.date = new Date('08-08-2018');
-    this.books = this.booksService.getBooks();
-    this.allBooks = this.booksService.getBooks();
+    this.booksService.getBooks()
+    .subscribe(
+      (books: Book[]) => {
+        this.books = books;
+        this.allBooks = books;
+      }, (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
   onBookSelected(data: Book){

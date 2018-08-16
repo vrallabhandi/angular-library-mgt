@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 
+import { HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
@@ -25,7 +26,8 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [BooksService, FilterPipe],
   bootstrap: [AppComponent]
