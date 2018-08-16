@@ -1,0 +1,15 @@
+<div class="col-sm-4 book-card" (click)="bookClicked()">
+  <img class="thumbnail" [src]="book.thumbnail"
+    [alt]="book.code">
+
+    <div class="book-info">
+      <h4 appHoverElement>
+        {{book.name | uppercase}}
+      </h4>
+      <p>
+        Author: {{book.author}}
+        <br>
+        Code: {{book.code}}
+      </p>
+    </div>
+  </div>
