@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-sm-12">
+        <a class="pull-right" routerLink='/login'>
+          Log Out
+        </a>
+    </div>
+</div>
+
+<h2> {{ title | async }} --- {{ time | async | date: 'h:mm:ss' }} </h2>
+<app-books></app-books>

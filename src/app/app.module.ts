@@ -12,6 +12,10 @@ import { HoverElementDirective } from './directives/hover-element.directive';
 import { BooksService } from './services/books.service';
 import { BookFilterPipe } from './pipes/book-filter/book-filter.pipe';
 import { ShortenPipe } from './pipes/shorten/shorten.pipe';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { AppRoutingModule } from './app.routing.module';
+import { RouterModule } from '../../node_modules/@angular/router';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -23,12 +27,16 @@ import { ShortenPipe } from './pipes/shorten/shorten.pipe';
     SelectedBookNameDirective,
     HoverElementDirective,
     BookFilterPipe,
-    ShortenPipe
+    ShortenPipe,
+    LoginPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [
     BooksService,
