@@ -21,33 +21,43 @@ export class AppComponent implements OnInit {
   constructor(
     private booksService: BooksService,
     private filterPipe: FilterPipe
-  ){}
+  ) { }
   //booksService: BooksService = new BooksService(); //other way of calling service but in this way we are not really using any angular DI
 
-  ngOnInit(){
+  ngOnInit() {
     this.date = new Date('08-08-2018');
     this.booksService.getBooks()
-    .subscribe(
+      .subscribe(
       (books: Book[]) => {
         this.books = books;
         this.allBooks = books;
       }, (err: any) => {
         console.log(err);
       }
-    );
+      );
   }
 
-  onBookSelected(data: Book){
+  onBookSelected(data: Book) {
     this.selectedBook = data;
     //console.log(data);
     // console.log(this.bookName.nativeElement.value);
   }
 
-  checkName(element: HTMLInputElement){
+  addBook() {
+    const book = <Book>{
+      code: 'B001',
+      name: 'DATA WITH JAVA',
+      thumbnail: '../../assets/PROGRAMMING WITH JAVA.JPG',
+      author: 'Rohit Khurana'
+    }
+    this.books.push(book);
+  }
+
+  checkName(element: HTMLInputElement) {
     console.log(element.value);
   }
 
-  filterBooks(){
+  filterBooks() {
     this.books = this.filterPipe.transform(this.allBooks, this.filterText, 'name');
   }
 }

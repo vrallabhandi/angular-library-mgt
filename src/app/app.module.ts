@@ -12,6 +12,7 @@ import { HoverElementDirective } from './directives/hover-element/hover-element.
 import { BooksService } from './services/books.service';
 import { ShortenPipe } from './pipes/shorten/shorten.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
+import { PipesExampleComponent } from './pipes-example/pipes-example.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
     HighlighterDirective,
     HoverElementDirective,
     ShortenPipe,
-    FilterPipe
+    FilterPipe,
+    PipesExampleComponent
   ],
   imports: [
     BrowserModule,

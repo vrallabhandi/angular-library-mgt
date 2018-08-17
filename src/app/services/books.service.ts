@@ -6,6 +6,7 @@ import 'rxjs/Rx';
 import { environment } from "../../environments/environment";
 import 'rxjs/add/operator/map';
 import { urls } from "../constants/urls.constant";
+import { Observer } from "rxjs/Observer";
 
 @Injectable()
 export class BooksService {
@@ -40,4 +41,31 @@ export class BooksService {
       }
       )
   };
+
+  getNameString() {
+    return new Promise(
+      (resolve, reject) => {
+        setTimeout(() => {
+          resolve('This is my data');
+        }, 2000);
+      }
+    );
+  }
+
+  getTimeObservable(): Observable<Date>{
+    console.log('called time');
+    return Observable.create(
+      (observer: Observer<Date>) => {
+        const interval = setInterval(() =>{
+          observer.next(new Date());
+          // observer.error(new Error('Time Error'));
+        }, 1000);
+
+        setTimeout(() => {
+          clearInterval(interval);
+          observer.complete();
+        }, 10000)
+      }
+    )
+  }
 }
