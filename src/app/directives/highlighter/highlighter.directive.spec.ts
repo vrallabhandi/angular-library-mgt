@@ -53,21 +53,17 @@ describe('HighlighterDirective', () => {
     });
 
     it('should handle font size and color for positive case', () => {
-        pTag1.nativeElement.style.fontSize = '50px';
         fixture.detectChanges();
         expect(pTag1.nativeElement.style.fontSize).toEqual('50px');
 
-        pTag1.nativeElement.style.backgroundColor = 'yellow';
         fixture.detectChanges();
         expect(pTag1.nativeElement.style.backgroundColor).toEqual('yellow');
     });
 
     it('should handle font size and color for negative case', () => {
-        pTag2.nativeElement.style.fontSize = '30px';
         fixture.detectChanges();
         expect(pTag2.nativeElement.style.fontSize).toEqual('30px');
 
-        pTag2.nativeElement.style.backgroundColor = 'purple';
         fixture.detectChanges();
         expect(pTag2.nativeElement.style.backgroundColor).toEqual('purple');
     });
