@@ -7,4 +7,12 @@
 </div>
 
 <h2> {{ title | async }} --- {{ time | async | date: 'h:mm:ss' }} </h2>
+
+<ul class="list-inline">
+  <li><a routerLink="/home/1">page 1</a></li>
+  <li><a routerLink="./2">page 2</a></li>
+  <li><a [routerLink]="['/home', '3']">page 3</a></li>
+  <li><a routerLink="/home/4">page 4</a></li>
+  <li> <button (click)="goToPage(2)">Go to page 2</button></li>
+</ul>
 <app-books></app-books>

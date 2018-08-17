@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable';
 import { Observer } from '../../../node_modules/rxjs/Observer';
+import { ActivatedRoute, Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {  }
 
   title = new Promise((res) => {
     setTimeout(() => {
@@ -25,5 +31,16 @@ export class HomePageComponent {
       observer.complete();
     }, 10000);
   });
+
+  ngOnInit() {
+    console.log(this.route.snapshot.params['id']);
+    this.route.params.subscribe(data => {
+      console.log(data['id']);
+    });
+  }
+
+  goToPage(pageNum: number) {
+    this.router.navigate(['/home', pageNum]);
+  }
 
 }
