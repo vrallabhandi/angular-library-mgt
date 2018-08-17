@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnInit, Renderer2,Input,OnChanges } from '@angular/core';
+import { Directive, ElementRef, HostBinding, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
 import {Book} from '../../models/book.model';
 
 @Directive({
@@ -7,6 +7,8 @@ import {Book} from '../../models/book.model';
 export class HighlighterDirective implements OnInit, OnChanges{
 //private elRef: ElementRef;
 @Input() book: Book;
+@HostBinding('style.fontSize') fontSize: string;
+//@HostBinding('class') fontSize: string;
   constructor(
     private elRef: ElementRef,
     private renderer: Renderer2
@@ -16,12 +18,12 @@ export class HighlighterDirective implements OnInit, OnChanges{
 
   ngOnInit() {
     console.log(this.elRef.nativeElement);
-    //this.renderer.setStyle(this.elRef.nativeElement,'background-color','yellow');
   }
 
   ngOnChanges(){
     const color = this.book.code ==='B001'? 'yellow' : 'purple';
     this.renderer.setStyle(this.elRef.nativeElement,'background-color',color);
+    this.fontSize = this.book.code ==='B001'? '20px' : '30px';
   }
 
 }
