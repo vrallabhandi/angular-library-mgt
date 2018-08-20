@@ -37,3 +37,13 @@
     <p>This is the example of ng content</p>
   </app-selected-book>
 </div>
+
+<div>
+  <div class="row">
+    <a [routerLink]="['/home']">Home</a> |
+    <a [routerLink]="['/contact']">Contact Us</a>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>
