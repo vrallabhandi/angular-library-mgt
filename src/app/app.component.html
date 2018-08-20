@@ -3,7 +3,13 @@
 <label for="name">{{name}}</label> -->
 
 <div class="row">
-    <div class='col-sm-4'></div>
+    <div class='col-sm-4'>
+        {{data | async}}
+    </div>
+    <div class='col-sm-4'>
+        <app-pipes-example></app-pipes-example>
+    </div>
+    
     <div class='col-sm-4'>
         <div class='input-group'>
     <input type='text' class="form-control" [(ngModel)]='filterText'/>
@@ -14,7 +20,9 @@
     </div>
     </div>
 </div>
-    <div class='col-sm-4'></div>
+    <button type='button' class='btn btn-primary' (click)='addBook()'>
+            Add new book
+    </button>
 </div>
 
 <div class="row">

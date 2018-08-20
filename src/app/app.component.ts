@@ -22,6 +22,14 @@ export class AppComponent implements OnInit {
     private filterPipe: FilterPipe
   ) { }
 
+data = new Promise(
+  (resolve,reject) =>{
+    setTimeout(() => {
+      resolve('This is my name');
+    },2000)
+  }
+);
+
   ngOnInit() {
     this.booksService.getBooks()
       .subscribe(
@@ -36,6 +44,16 @@ export class AppComponent implements OnInit {
   OnBookSelected(data: Book) {
     this.selectedBook = data;
     //console.log(this.bookName.nativeElement.value);
+  }
+
+  addBook(){
+    const book = <Book>{
+      code: 'B002',
+      author: 'E Balaguruswamy',
+      name: 'E Balaguruswamy',
+      thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/51X%2Bh4njKZL._SX369_BO1,204,203,200_.jpg'
+    }
+    this.books.push(book);
   }
 
   checkName(element: HTMLInputElement) {

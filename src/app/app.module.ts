@@ -10,6 +10,7 @@ import { HighlighterDirective } from './directives/highlighter/highlighter.direc
 import { HoverElementDirective } from './directives/hover-element/hover-element.directive';
 import { ShortenPipe } from './pipes/shorten/shorten.pipe';
 import { FilterPipe } from './pipes/filter/filter.pipe';
+import { PipesExampleComponent } from './pipes-example/pipes-example.component';
 
 
 
@@ -21,7 +22,8 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
     HighlighterDirective,
     HoverElementDirective,
     ShortenPipe,
-    FilterPipe
+    FilterPipe,
+    PipesExampleComponent
   ],
   imports: [
     BrowserModule,
