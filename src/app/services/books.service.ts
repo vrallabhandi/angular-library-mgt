@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import 'rxjs/Rx'
 import { urls } from '../constants/urls.constant';
+import { reject } from '../../../node_modules/@types/q';
+import { Observer } from 'rxjs/Rx';
 
 
 
@@ -56,5 +58,30 @@ export class BooksService {
       .sort((a: Book, b: Book) => a.name > b.name? 1: -1);
       return books;
      });
+  }
+
+  getNameString() {
+    return new Promise(
+      (resolve,reject) => {
+        setTimeout(() => {
+          resolve("This is my name");
+        }, 2000);
+      }
+    );
+  }
+
+  getTimeObservable(): Observable<Date> {
+    return Observable.create(
+      (observer: Observer<Date>) => {
+        const interval = setInterval(() => {
+          observer.next(new Date());
+        }, 1000);
+
+        setTimeout(() => {
+          clearInterval(interval);
+          observer.complete();
+        }, 10000)
+      }
+    )
   }
 }

@@ -4,12 +4,14 @@
 
     <div class="book-info">
       <h4 appHoverElement>
+        <a [routerLink]="['/selectedbook',book.author,book.code,book.name]">
         {{book.name | uppercase}}
+        </a>
       </h4>
-      <p>
+      <!-- <p>
         Author: {{book.author}}
         <br>
         Code: {{book.code}}
-      </p>
+      </p> -->
     </div>
   </div>

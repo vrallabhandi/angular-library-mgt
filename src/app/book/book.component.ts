@@ -17,6 +17,7 @@ export class BookComponent implements OnInit {
   }
 
   bookClicked() {
+    console.log(this.book);
     this.selected.emit(this.book);
   }
 }
