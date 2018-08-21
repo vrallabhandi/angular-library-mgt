@@ -8,9 +8,9 @@ describe('BookComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookComponent ]
+      declarations: [BookComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('BookComponent', () => {
     component = fixture.componentInstance;
     component.book = {
       name: 'A',
-      code : 'a',
+      code: 'a',
       author: 'Author A',
       thumbnail: 'a'
     };
@@ -29,9 +29,9 @@ describe('BookComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('bookClicked', ()=>{
-    it('should call the emit function on the selected property',()=>{
-      spyOn(component.selected,'emit');
+  describe('bookClicked', () => {
+    it('should call the emit function on the selected property', () => {
+      spyOn(component.selected, 'emit');
       component.bookClicked();
       expect(component.selected.emit).toHaveBeenCalled();
     })

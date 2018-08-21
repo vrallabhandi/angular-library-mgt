@@ -8,9 +8,9 @@ describe('PipesExampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PipesExampleComponent ]
+      declarations: [PipesExampleComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
