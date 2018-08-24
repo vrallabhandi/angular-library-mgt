@@ -16,9 +16,13 @@ import { PipesExampleComponent } from './pipes-example/pipes-example.component';
 import { HomeComponent } from './home/home/home.component';
 import { ContactusComponent } from './contact/contactus/contactus.component';
 import { BookstoreComponent } from './bookstore/bookstore.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "home", pathMatch:"full"},
+  { path: "", redirectTo: "login", pathMatch:"full"},
+  { path: "login", component: LoginPageComponent},
+  { path: "signup", component: SignupPageComponent},
   { path: "home", component: HomeComponent},
   { path: "contact", component: ContactusComponent},
   { path: "bookstore", component: BookstoreComponent},
@@ -38,7 +42,9 @@ const routes: Routes = [
     PipesExampleComponent,
     HomeComponent,
     ContactusComponent,
-    BookstoreComponent
+    BookstoreComponent,
+    LoginPageComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,

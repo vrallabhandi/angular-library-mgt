@@ -1,0 +1,66 @@
+<form #signupForm="ngForm" (ngSubmit)="saveEmployee(signupForm)">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">User Registration</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="form-group"
+       [class.has-error]="firstNameControl.invalid && firstNameControl.touched"
+       [class.has-success]="firstNameControl.valid">
+        <label for="firstName" class="control-label">First Name</label>
+        <input id="firstName" required type="text" class="form-control" name="firstName" [(ngModel)]="firstName" 
+        #firstNameControl="ngModel">
+        <span class="help-block" *ngIf="firstNameControl.invalid && firstNameControl.touched">
+          Full Name is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" class="form-control" name="lastName" [(ngModel)]="lastName">
+      </div>
+
+      <div class="form-group"
+       [class.has-error]="passwordControl.invalid && passwordControl.touched"
+       [class.has-success]="passwordControl.valid">
+        <label for="password" class="control-label">Password</label>
+        <input id="password" required type="password" class="form-control" name="password" [(ngModel)]="password" 
+        #passwordControl="ngModel">
+        <span class="help-block" *ngIf="passwordControl.invalid && passwordControl.touched">
+          Password is required
+        </span>
+      </div>
+
+      <div class="form-group"
+       [class.has-error]="emailControl.invalid && emailControl.touched"
+       [class.has-success]="emailControl.valid">
+        <label for="email" class="control-label">Email</label>
+        <input id="email" required [email]="emailControl.value !== ''" type="text" autocomplete="off"
+        class="form-control" name="email" value='' [(ngModel)]="email" 
+        #emailControl="ngModel">
+        <span class="help-block" *ngIf="emailControl.errors?.required && emailControl.touched">
+          Email is required
+        </span>
+        <span class="help-block" *ngIf="emailControl.errors?.email && emailControl.touched && emailControl.dirty">
+            Email is invalid
+          </span>
+      </div>
+
+      <div class="form-group"
+       [class.has-error]="telephoneControl.invalid && telephoneControl.touched"
+       [class.has-success]="telephoneControl.valid">
+        <label for="telephone" class="control-label">Telephone Number</label>
+        <input id="telephone" required type="text" class="form-control" name="telephone" [(ngModel)]="telephone" 
+        #telephoneControl="ngModel">
+        <span class="help-block" *ngIf="telephoneControl.invalid && telephoneControl.touched">
+          Telephone Number is required
+        </span>
+      </div>
+
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary" type="submit" [disabled]="signupForm.invalid">Save</button>
+    </div>
+  </div>
+</form>
