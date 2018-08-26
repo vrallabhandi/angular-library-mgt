@@ -18,6 +18,7 @@ import { ContactusComponent } from './contact/contactus/contactus.component';
 import { BookstoreComponent } from './bookstore/bookstore.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
+import { ConfirmEqualValidatorDirective } from './directives/confirm-equal-validator/confirm-equal-validator.directive';
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch:"full"},
@@ -44,7 +45,8 @@ const routes: Routes = [
     ContactusComponent,
     BookstoreComponent,
     LoginPageComponent,
-    SignupPageComponent
+    SignupPageComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,
