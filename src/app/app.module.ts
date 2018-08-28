@@ -17,10 +17,14 @@ import { PipesExampleComponent } from './pipes-example/pipes-example.component';
 import { HomeComponent } from './home/home/home.component';
 import { ContactusComponent } from './contact/contactus/contactus.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { BooksComponent } from './books/books.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "registration", component: RegistrationComponent },
   { path: "login", component: LoginPageComponent },
+  { path: "books", component: BooksComponent },
   { path: "home", component: HomeComponent },
   { path: "contact", component: ContactusComponent },
   { path: "**", redirectTo: "home" }
@@ -38,7 +42,9 @@ const routes: Routes = [
     PipesExampleComponent,
     HomeComponent,
     ContactusComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RegistrationComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,

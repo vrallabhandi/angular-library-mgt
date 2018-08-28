@@ -10,36 +10,8 @@
 
 <div class="row">
   <a [routerLink]="['/home']">Home</a> |
-  <a [routerLink]="['/contact']">Contact Us</a>
-  <a [routerLink]="['/login']" class="pull-right">Log Out</a>
-</div>
-
-<div class="row">
-  <div class="col-sm-4">
-    <app-pipes-example></app-pipes-example>
-  </div>
-  <div class="col-sm-4">
-    <div class="input-group">
-      <input type="text" class="form-control" [(ngModel)]="filterText" />
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-primary" (click)="filterBooks()">
-          <i class="glyphicon glyphicon-search"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <button type="button" class="btn btn-primary" (click)="addBook()">
-      Add New Book
-    </button>
-  </div>
-</div>
-<hr>
-<div class="row">
-  <app-book *ngFor="let book of books" [book]="book" (selected)="onBookSelected($event)"></app-book>
-</div>
-<div class="row">
-  <app-selected-book [book]="selectedBook" *ngIf="selectedBook">
-    <p>This is the example of ng content</p>
-  </app-selected-book>
+  <a [routerLink]="['/contact']">Contact Us</a> |
+  <a [routerLink]="['/registration']">Register</a> |
+  <a [routerLink]="['/books']">Books</a>
+  <a [routerLink]="['/login']" class="pull-right">Log Out</a>  
 </div>
