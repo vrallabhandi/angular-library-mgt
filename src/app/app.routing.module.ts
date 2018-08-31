@@ -6,7 +6,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 const routes: Routes = [
     { path: 'login', component: LoginPageComponent },
     { path: 'home', component: HomePageComponent },
-    { path: 'home/:id', component: HomePageComponent },
+    { path: 'home/:id?', component: HomePageComponent },
     { path: '**', redirectTo: 'home' }
 ];
 
