@@ -1,0 +1,6 @@
+.error-message {
+    color: red;
+}
+.ng-invalid.ng-touched {
+    border-color: red;
+}

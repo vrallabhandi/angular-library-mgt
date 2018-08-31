@@ -1,7 +1,19 @@
 <div class="col-sm-12">
   <h2>Please login to continue</h2>
 </div>
-<a class="btn btn-primary" routerLink='/home/1'>
-  Log In
-</a>
-
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+  <div class="form-group">
+    <label for="username">User Name:</label>
+    <input type="text" class="form-control" name="uname" ngModel #uname="ngModel" autocomplete="off" id="username" required minlength="4">
+    <p class="error-message" *ngIf="uname.touched && uname.errors && uname?.errors.required">Please enter User Name.</p>
+    <p class="error-message" *ngIf="loginForm.dirty && uname.errors && uname?.errors.minlength">User Name has be minimum 4 characters.</p>
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" name="pwd" ngModel #pwd="ngModel" id="pwd" required>
+  </div>
+  <div class="alert alert-danger" *ngIf="loginFailed">
+    Login Failed. You have entered incorrect credentials.
+  </div>
+  <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Log In</button>
+</form>
