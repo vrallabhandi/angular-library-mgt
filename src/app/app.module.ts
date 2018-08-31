@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { HttpClientModule } from '@angular/common/http'
 
@@ -19,11 +19,13 @@ import { ContactusComponent } from './contact/contactus/contactus.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BooksComponent } from './books/books.component';
+import { LoginReactiveComponent } from './login-reactive/login-reactive.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "registration", component: RegistrationComponent },
-  { path: "login", component: LoginPageComponent },
+  // { path: "login", component: LoginPageComponent },
+  { path: "login", component: LoginReactiveComponent },
   { path: "books", component: BooksComponent },
   { path: "home", component: HomeComponent },
   { path: "contact", component: ContactusComponent },
@@ -44,11 +46,13 @@ const routes: Routes = [
     ContactusComponent,
     LoginPageComponent,
     RegistrationComponent,
-    BooksComponent
+    BooksComponent,
+    LoginReactiveComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
