@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -19,11 +19,13 @@ import { BookstoreComponent } from './bookstore/bookstore.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { ConfirmEqualValidatorDirective } from './directives/confirm-equal-validator/confirm-equal-validator.directive';
+import { LoginReactiveComponent } from './login-reactive/login-reactive.component';
+import { SignupPageReactiveComponent } from './signup-page-reactive/signup-page-reactive.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "login", pathMatch:"full"},
-  { path: "login", component: LoginPageComponent},
-  { path: "signup", component: SignupPageComponent},
+  { path: "login", component: LoginReactiveComponent},
+  { path: "signup", component: SignupPageReactiveComponent},
   { path: "home", component: HomeComponent},
   { path: "contact", component: ContactusComponent},
   { path: "bookstore", component: BookstoreComponent},
@@ -46,11 +48,14 @@ const routes: Routes = [
     BookstoreComponent,
     LoginPageComponent,
     SignupPageComponent,
-    ConfirmEqualValidatorDirective
+    ConfirmEqualValidatorDirective,
+    LoginReactiveComponent,
+    SignupPageReactiveComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
