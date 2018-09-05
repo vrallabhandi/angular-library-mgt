@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,6 +16,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { AppRoutingModule } from './app.routing.module';
 import { RouterModule } from '../../node_modules/@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NameValidatorDirective } from './validators/username.directive';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 
 
 @NgModule({
@@ -29,11 +31,14 @@ import { HomePageComponent } from './home-page/home-page.component';
     BookFilterPipe,
     ShortenPipe,
     LoginPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    NameValidatorDirective,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
     AppRoutingModule
