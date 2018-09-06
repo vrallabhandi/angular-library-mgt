@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Book } from '../models/book.model';
-import { FilterPipe } from '../pipes/filter/filter.pipe';
-import { BooksService } from '../services/books.service';
+import { Book } from '../../models/book.model';
+import { FilterPipe } from '../../pipes/filter/filter.pipe';
+import { BooksService } from '../../services/books.service';
 
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  selector: 'app-books-page',
+  templateUrl: './books-page.component.html',
+  styleUrls: ['./books-page.component.css']
 })
-export class BooksComponent implements OnInit {
+export class BooksPageComponent implements OnInit {
 
   @ViewChild('bName') bookName: ElementRef;
   selectedBook: Book;
@@ -31,7 +31,7 @@ export class BooksComponent implements OnInit {
       .subscribe(
       (books: Book[]) => {
         this.books = books;
-        this.allBooks = books;
+        this.allBooks = books.slice();
       }, (err: any) => {
         console.log(err);
       }
@@ -52,6 +52,7 @@ export class BooksComponent implements OnInit {
       author: 'Rohit Khurana'
     }
     this.books.push(book);
+    this.allBooks.push(book);
   }
 
   checkName(element: HTMLInputElement) {
