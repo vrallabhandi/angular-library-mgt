@@ -1,19 +1,7 @@
 <div class="row">
-    <div class="col-sm-12">
-        <a class="pull-right" routerLink='/login'>
-          Log Out
-        </a>
-    </div>
+  <app-header></app-header>
 </div>
 
 <h2> {{ title | async }} --- {{ time | async | date: 'h:mm:ss' }} </h2>
 
-<ul class="list-inline">
-  <li routerLinkActive="selected-page" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/home">home</a></li>
-  <li routerLinkActive="selected-page"><a routerLink="/home/1">page 1</a></li>
-  <li routerLinkActive="selected-page"><a routerLink="./2">page 2</a></li>
-  <li routerLinkActive="selected-page"><a [routerLink]="['/home', '3']">page 3</a></li>
-  <li routerLinkActive="selected-page"><a routerLink="/home/4">page 4</a></li>
-  <li> <button (click)="goToPage(2)">Go to page 2</button></li>
-</ul>
 <app-books></app-books>

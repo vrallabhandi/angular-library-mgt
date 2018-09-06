@@ -13,11 +13,12 @@ import { BooksService } from './services/books.service';
 import { BookFilterPipe } from './pipes/book-filter/book-filter.pipe';
 import { ShortenPipe } from './pipes/shorten/shorten.pipe';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { AppRoutingModule } from './app.routing.module';
-import { RouterModule } from '../../node_modules/@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NameValidatorDirective } from './validators/username.directive';
 import { SignupPageComponent } from './signup-page/signup-page.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
     LoginPageComponent,
     HomePageComponent,
     NameValidatorDirective,
-    SignupPageComponent
+    SignupPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

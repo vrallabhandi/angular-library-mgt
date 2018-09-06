@@ -4,7 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { BooksService } from './books.service';
 import { urls } from '../constants/urls.constant';
 import { environment } from '../../environments/environment.prod';
-import { Http } from '../../../node_modules/@angular/http';
+import { Http } from '@angular/http';
 
 const booksResp = [{
     code: 'B1',

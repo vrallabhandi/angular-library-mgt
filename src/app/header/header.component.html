@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/home">Library Management</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/home">Books</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/home/1">Pipes</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="./2">Page 2</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/home', '3']">Page 3</a>
+      </li>
+      <li routerLinkActive="active">
+          <a (click)="$event.preventDefault(); goToPage(4);" style="cursor: pointer;">Page 4</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li>
+          <a routerLink="/login">Log Out</a>
+        </li>
+      </ul>
+  </div>
+</nav>

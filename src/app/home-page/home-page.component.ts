@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable';
-import { Observer } from '../../../node_modules/rxjs/Observer';
-import { ActivatedRoute, Router } from '../../../node_modules/@angular/router';
+import { Observer } from 'rxjs/Observer';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
