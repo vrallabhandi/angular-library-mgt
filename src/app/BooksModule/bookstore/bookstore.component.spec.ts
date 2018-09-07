@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { BookstoreComponent } from './bookstore.component';
-import { FormsModule } from '../../../node_modules/@angular/forms';
-import { NO_ERRORS_SCHEMA } from '../../../node_modules/@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 describe('BookstoreComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({

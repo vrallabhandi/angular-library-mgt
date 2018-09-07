@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { BookComponent } from './book/book.component';
 import { SelectedBookComponent } from './selected-book/selected-book.component';
 import { HighlighterDirective } from './directives/highlighter/highlighter.directive';
 import { HoverElementDirective } from './directives/hover-element/hover-element.directive';
@@ -15,28 +14,18 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 import { PipesExampleComponent } from './pipes-example/pipes-example.component';
 import { HomeComponent } from './home/home/home.component';
 import { ContactusComponent } from './contact/contactus/contactus.component';
-import { BookstoreComponent } from './bookstore/bookstore.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { ConfirmEqualValidatorDirective } from './directives/confirm-equal-validator/confirm-equal-validator.directive';
 import { LoginReactiveComponent } from './login-reactive/login-reactive.component';
 import { SignupPageReactiveComponent } from './signup-page-reactive/signup-page-reactive.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const routes: Routes = [
-  { path: "", redirectTo: "login", pathMatch:"full"},
-  { path: "login", component: LoginReactiveComponent},
-  { path: "signup", component: SignupPageReactiveComponent},
-  { path: "home", component: HomeComponent},
-  { path: "contact", component: ContactusComponent},
-  { path: "bookstore", component: BookstoreComponent},
-  { path: "selectedbook/:author/:code/:name", component: SelectedBookComponent},
-  { path: "**", redirectTo: "home", pathMatch:"full"},
-];
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
     SelectedBookComponent,
     HighlighterDirective,
     HoverElementDirective,
@@ -45,7 +34,6 @@ const routes: Routes = [
     PipesExampleComponent,
     HomeComponent,
     ContactusComponent,
-    BookstoreComponent,
     LoginPageComponent,
     SignupPageComponent,
     ConfirmEqualValidatorDirective,
@@ -57,7 +45,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [BooksService, FilterPipe],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Book } from '../models/book.model';
-import { BooksService } from '../services/books.service';
-import { FilterPipe } from '../pipes/filter/filter.pipe';
+import { Book } from '../../models/book.model';
+import { BooksService } from '../../services/books.service';
+import { FilterPipe } from '../../pipes/filter/filter.pipe';
 
 
 @Component({
