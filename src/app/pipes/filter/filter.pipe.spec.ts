@@ -1,16 +1,15 @@
-
 import { FilterPipe } from './filter.pipe';
 import { Book } from '../../models/book.model';
 
-fdescribe('FilterPipe', () => {
+describe('FilterPipe', () => {
   let pipe: FilterPipe;
   let books: Book[] = [
-    { code: "B001", author: "author1", name: "Object Oriented Programming", thumbnail: "t1" },
-    { code: "B002", author: "author2", name: "Data Structures", thumbnail: "t2" }
+    { code: "B002", author: "aaa", name: "Object Oriented Programming", thumbnail: "ccc" },
+    { code: "B003", author: "aaa", name: "Angular Training", thumbnail: "ccc" }
   ];
 
   let book: Book[] = [
-    { code: "B002", author: "author2", name: "Data Structures", thumbnail: "t2" }
+    { code: "B003", author: "aaa", name: "Angular Training", thumbnail: "ccc" }
   ];
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ fdescribe('FilterPipe', () => {
 
 
   it('Should filter books based on the input text on name property', () => {
-    expect(pipe.transform(books, 'Data', 'name')).toEqual(book);
+    expect(pipe.transform(books, 'angular', 'name')).toEqual(book);
   });
 
   it('Should return all books if input is empty', () => {

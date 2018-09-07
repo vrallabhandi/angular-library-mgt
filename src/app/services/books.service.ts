@@ -1,76 +1,87 @@
-import { Observer } from 'rxjs/Rx';
-import { urls } from '../constants/urls.constants';
-import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Book } from '../models/book.model';
 import { Injectable } from '@angular/core';
+import { Book } from '../models/book.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import 'rxjs/Rx';
+import { ErrorObservable } from '../../../node_modules/rxjs/observable/ErrorObservable';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import 'rxjs/Rx'
+import { urls } from '../constants/urls.constant';
+import { reject } from '../../../node_modules/@types/q';
+import { Observer } from 'rxjs/Rx';
+
+
 
 @Injectable()
 export class BooksService {
-  private books: Book[] = [
+
+  constructor(
+    private _http: HttpClient
+  ) { }
+
+  books: Book[] = [
     {
       code: "B001",
-      author: "Rohit Khurana",
-      name: 'Object Oriented Programming with c++',
-      thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325975644.JPG"
+      author: "Rohit",
+      name: "C++",
+      thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325975644.jpg"
     },
     {
       code: "B002",
-      author: "Suresh KanchamReddy",
-      name: 'Cracking the Coding Interview: 189 Programing Questions and Solutions',
-      thumbnail: "https://images-na.ssl-images-amazon.com/images/I/51l5XzLln%2BL._SX348_BO1,204,203,200_.jpg"
-    }]
+      author: "Lee Chao",
+      name: "Networking",
+      thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9781420091595.jpg"
+    },
+    {
+      code: "B003",
+      author: "Ashok Arora",
+      name: "Computer Fundamentals",
+      thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325992276.jpg"
+    },
+    {
+      code: "B004",
+      author: "Bel",
+      name: "Information Security",
+      thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9781420078541.jpg"
+    }
+  ];
 
-  constructor(
-    private http: HttpClient,
-    //private bookService: BooksService
-  ) { }
-  //getBooks(){
-  //return this.books;
-  // return Observable.of(this.books)
+  //getBooks(): Observable<any> {
+   // return Observable.of(this.books);
+    //return new ErrorObservable("error");
   //}
 
-  // getBooksServer(){
-  //   this.http.get(environment.baseUrl + 'books.json')
-  //    .subscribe((response) => {
-  //      console.log(response);
-  //    })
-  // }
-
   getBooks(): Observable<Book[]> {
-    return this.http.get(environment.baseUrl + urls.books)
-      .map(data => {
-        const books = (<Book[]>data)
-          .sort((a: Book, b: Book) => a.name > b.name ? 1 : -1);
-        return books
-      });
+    return this._http.get(environment.baseUrl + urls.books)
+    .map(data => {
+      const books = (<Book[]>data)
+      .sort((a: Book, b: Book) => a.name > b.name? 1: -1);
+      return books;
+     });
   }
 
   getNameString() {
     return new Promise(
-      (resolve, reject) => {
+      (resolve,reject) => {
         setTimeout(() => {
-          resolve('This is my name');
-        }, 2000)
+          resolve("This is my name");
+        }, 2000);
       }
     );
   }
 
- getTimeObservable(): Observable<Date>{
-   console.log('called time');
-   return Observable.create(
-     (observer: Observer<Date>) => {
-       const interval = setInterval(() => {
-        observer.next(new Date());
-       },1000);
-       setTimeout(() => {
-       clearInterval(interval);
-       observer.complete();
-        }, 10000);
-     }
-   )
- }
+  getTimeObservable(): Observable<Date> {
+    return Observable.create(
+      (observer: Observer<Date>) => {
+        const interval = setInterval(() => {
+          observer.next(new Date());
+        }, 1000);
+
+        setTimeout(() => {
+          clearInterval(interval);
+          observer.complete();
+        }, 10000)
+      }
+    )
+  }
 }

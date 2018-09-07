@@ -1,5 +1,5 @@
-import { BooksService } from '../services/books.service';
 import { Component, OnInit } from '@angular/core';
+import { BooksService } from '../services/books.service';
 
 @Component({
   selector: 'app-pipes-example',
@@ -7,24 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pipes-example.component.css']
 })
 export class PipesExampleComponent implements OnInit {
-data: string;
-date= this.booksService.getTimeObservable();
 
-  constructor(private booksService: BooksService) { }
+  constructor(private bookService: BooksService) { }
+
+  data = this.bookService.getNameString();
+  date = this.bookService.getTimeObservable();
 
   ngOnInit() {
-    // this.booksService.getNameString()
+    // this.bookService.getNameString()
     // .then((name: string) => {
     //   this.data = name;
-    // })
+    // })  
 
-    // this.booksService.getTimeObservable()
+    // this.bookService.getTimeObservable()
     // .subscribe(
     //   (date: Date) => {
     //     console.log(date);
     //   },
     //   (err) => {
-    //     console.error(err)
+    //     console.log(err);
     //   },
     //   () => {
     //     console.log('completed')

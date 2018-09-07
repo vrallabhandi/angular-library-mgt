@@ -15,20 +15,20 @@ import { HighlighterDirective } from './highlighter.directive';
 class TestComponent {
     book1: Book = {
         code: "B001",
-        author: "author1",
-        name: "name1",
-        thumbnail: "t1"
+        author: "aaa",
+        name: "bbb",
+        thumbnail: "ccc"
     };
 
     book2: Book = {
         code: "B002",
-        author: "author2",
-        name: "name2",
-        thumbnail: "t2"
+        author: "aaa",
+        name: "bbb",
+        thumbnail: "ccc"
     };
 }
 
-fdescribe('HighlighterDirective', () => {
+describe('HighlighterDirective', () => {
     let component: TestComponent;
     let fixture: ComponentFixture<TestComponent>;
     let pTag1: DebugElement;
@@ -52,23 +52,20 @@ fdescribe('HighlighterDirective', () => {
         fixture.detectChanges();
     });
 
-    it('should handle color for positive case', () => {
+    it('should handle font size and color for positive case', () => {
+        fixture.detectChanges();
+        expect(pTag1.nativeElement.style.fontSize).toEqual('50px');
+
         fixture.detectChanges();
         expect(pTag1.nativeElement.style.backgroundColor).toEqual('yellow');
     });
 
-    it('should handle color for negative case', () => {
-        fixture.detectChanges();
-        expect(pTag2.nativeElement.style.backgroundColor).toEqual('purple');
-    });
-    it('should handle font size for positive case', () => {
-        fixture.detectChanges();
-        expect(pTag1.nativeElement.style.fontSize).toEqual('20px');
-    });
-
-    it('should handle font size for negative case', () => {
+    it('should handle font size and color for negative case', () => {
         fixture.detectChanges();
         expect(pTag2.nativeElement.style.fontSize).toEqual('30px');
+
+        fixture.detectChanges();
+        expect(pTag2.nativeElement.style.backgroundColor).toEqual('purple');
     });
 
 });

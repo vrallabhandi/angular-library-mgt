@@ -1,29 +1,26 @@
-import { Directive, ElementRef, HostBinding, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
-import {Book} from '../../models/book.model';
+import { Directive, OnInit, ElementRef, Renderer2, Input, OnChanges, HostBinding } from '@angular/core';
+import { Book } from '../../models/book.model';
 
 @Directive({
   selector: '[appHighlighter]'
 })
-export class HighlighterDirective implements OnInit, OnChanges{
-//private elRef: ElementRef;
-@Input() book: Book;
-@HostBinding('style.fontSize') fontSize: string;
-//@HostBinding('class') fontSize: string;
+export class HighlighterDirective implements OnInit, OnChanges {
+  @Input() book: Book;
+
+  @HostBinding('style.fontSize') fontSize: string
   constructor(
-    private elRef: ElementRef,
+    private eLRef: ElementRef,
     private renderer: Renderer2
-    ) {
-    //this.elRef = elRef;
-   }
+  ) { }
 
   ngOnInit() {
-    console.log(this.elRef.nativeElement);
+    console.log(this.eLRef.nativeElement);
+    //this.renderer.setStyle(this.eLRef.nativeElement, 'background-color','black');
   }
 
-  ngOnChanges(){
-    const color = this.book.code ==='B001'? 'yellow' : 'purple';
-    this.renderer.setStyle(this.elRef.nativeElement,'background-color',color);
-    this.fontSize = this.book.code ==='B001'? '20px' : '30px';
+  ngOnChanges() {
+    const color = this.book.code === 'B001' ? 'yellow' : 'purple';
+    this.renderer.setStyle(this.eLRef.nativeElement, 'background-color', color);
+    this.fontSize = this.book.code === 'B001' ? '50px' : '30px';
   }
-
 }

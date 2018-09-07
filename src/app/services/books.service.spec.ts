@@ -1,45 +1,61 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
+import {
+  Response,
+  ResponseOptions,
+  XHRBackend
+} from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 import { BooksService } from './books.service';
-import { environment } from '../../environments/environment';
-import { urls } from '../constants/urls.constants';
+import { HttpClientModule } from '@angular/common/http';
 import { Book } from '../models/book.model';
 
 describe('BooksService', () => {
-  let service: BooksService,
-    httpMock: HttpTestingController;
+
   beforeEach(() => {
+
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
-      ],
+      imports: [HttpClientModule],
       providers: [
-        BooksService
+        BooksService,
+        { provide: XHRBackend, useClass: MockBackend },
       ]
     });
-    httpMock = TestBed.get(HttpTestingController);
-    service = TestBed.get(BooksService);
   });
 
-  fit('should be created', inject([BooksService], (service: BooksService) => {
-    expect(service).toBeTruthy();
-  }));
+  describe('getBooks()', () => {
 
-  describe('getBooks', () => {
-    it('should make a http request and get the books', () => {
-      const booksResp: Book[] = [{
-        code: 'C1',
-        author: 'A1',
-        name: 'Book1',
-        thumbnail: 'url'
-      }]
-      service.getBooks()
-        .subscribe(data => {
-          console.log(data);
-        })
-      
-      const request = httpMock.expectOne(environment.baseUrl + urls.books);
-      request.flush(booksResp);
-    });
+    it('should return an Observable<Array<Video>>',
+      inject([BooksService, XHRBackend], (booksService, mockBackend) => {
+
+        const mockResponse = {
+          data: [
+            {
+              code: "B001",
+              author: "Rohit",
+              name: "C++",
+              thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325975644.jpg"
+            },
+            {
+              code: "B002",
+              author: "Lee Chao",
+              name: "Networking",
+              thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9781420091595.jpg"
+            }
+          ]
+        };
+
+        mockBackend.connections.subscribe((connection) => {
+          connection.mockRespond(new Response(new ResponseOptions({
+            body: JSON.stringify(mockResponse)
+          })));
+        });
+
+        booksService.getBooks().subscribe((videos) => {
+          expect(videos.length).toBe(2);
+          expect(videos[0].name).toEqual('Video 0');
+          expect(videos[1].name).toEqual('Video 1');          
+        });
+
+      }));
   });
 });

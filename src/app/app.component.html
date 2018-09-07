@@ -1,40 +1,17 @@
-<!-- <input type="text" name="bookName" [(ngModel)]="name" #bName/>
-<button name="mybutton" (click)="checkName(bName)">click me!</button>
-<label for="name">{{name}}</label> -->
-
-<div class="row">
-    <div class='col-sm-4'>
-        {{data | async}}
-    </div>
-    <div class='col-sm-4'>
-        <app-pipes-example></app-pipes-example>
-    </div>
-    
-    <div class='col-sm-4'>
-        <div class='input-group'>
-    <input type='text' class="form-control" [(ngModel)]='filterText'/>
-    <div class='input-group-btn'>
-        <button type='button' class='btn btn-primary' (click)='filterBooks()'>
-            <i class='glyphicon glyphicon-search'></i>
-        </button>
-    </div>
-    </div>
-</div>
-    <button type='button' class='btn btn-primary' (click)='addBook()'>
-            Add new book
-    </button>
-</div>
-
-<div class="row">
-    <app-book *ngFor =  "let book of books" [book]="book"  (selected)="OnBookSelected(book)"></app-book>
-</div>
-
 <!-- <div class="row">
-    <app-book *ngFor =  "let book of books | filter: filterText: 'name'" [book]="book"  (selected)="OnBookSelected(book)"></app-book>
+  <input type="text" name="bookName" [(ngModel)]="name" #bName/>
+  <button (click)="checkName(bName)">Click Me!</button>
+</div> -->
+<!-- <div class="row">
+  Pipes
+  {{name | uppercase}}
+  {{date | date: 'longDate' | uppercase}}
 </div> -->
 
-<div>
-    <app-selected-book [book]="selectedBook" *ngIf="selectedBook">
-        <p>This is some nested content</p>
-    </app-selected-book>
+<div class="row">
+  <a [routerLink]="['/home']">Home</a> |
+  <a [routerLink]="['/contact']">Contact Us</a> |
+  <a [routerLink]="['/bookstore']">Book store</a> |
+  <a [routerLink]="['/login']" class="pull-right">Log Out</a>
+  <router-outlet></router-outlet>  
 </div>
