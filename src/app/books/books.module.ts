@@ -10,11 +10,12 @@ import { SelectedBookComponent } from "../selected-book/selected-book.component"
 import { HighlighterDirective } from "../directives/highlighter/highlighter.directive";
 import { ShortenPipe } from "../pipes/shorten/shorten.pipe";
 import { HoverElementDirective } from "../directives/hover-element/hover-element.directive";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { StoreModule } from "@ngrx/store";
 import { BooksReducer } from "../store/book.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { BookEffects } from "../store/book.effects";
+import { AppInterceptor } from "../services/app.interceptor";
 
 @NgModule({
     declarations: [
@@ -32,12 +33,13 @@ import { BookEffects } from "../store/book.effects";
         BooksRoutingModule,
         HttpClientModule,
         StoreModule.forRoot({
-          books: BooksReducer
+            books: BooksReducer
         }),
         EffectsModule.forRoot([BookEffects])
     ],
     providers: [
-        BooksService
+        BooksService,
+        { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true }
     ]
 })
 export class BooksModule {

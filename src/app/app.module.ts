@@ -33,7 +33,11 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule
     // ,BooksModule
   ],
-  providers: [BooksService, FilterPipe], // Added FilterPipe for DI
+  providers: [
+    BooksService,
+    FilterPipe,
+    //  { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor }
+  ], // Added FilterPipe for DI
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,7 +22,11 @@ describe('BooksService', () => {
     service = TestBed.get(BooksService);
   });
 
-  fit('should be created', inject([BooksService], (service: BooksService) => {
+  afterEach(() => {
+    httpMock.verify();
+  })
+
+  it('should be created', inject([BooksService], (service: BooksService) => {
     expect(service).toBeTruthy();
   }));
 
@@ -36,7 +40,7 @@ describe('BooksService', () => {
       }]
       service.getBooks()
         .subscribe(data => {
-          console.log(data);
+          expect(data).toEqual(booksResp);
         })
 
       const request = httpMock.expectOne(environment.baseUrl + urls.books);

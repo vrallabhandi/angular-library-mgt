@@ -32,7 +32,7 @@ export class BooksService {
   // }
 
   getBooks(): Observable<Book[]> {
-    return this.http.get(environment.baseUrl + urls.books)
+    return this.http.get(urls.books)
       .map(data => {
         const books: Book[] = (<Book[]>data)
           .sort((a: Book, b: Book) => a.name > b.name ? 1 : -1);
