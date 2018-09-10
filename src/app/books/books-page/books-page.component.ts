@@ -2,6 +2,10 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Book } from '../../models/book.model';
 import { FilterPipe } from '../../pipes/filter/filter.pipe';
 import { BooksService } from '../../services/books.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store/app.state';
+import { Observable } from 'rxjs';
+import * as booksActions from "../../store/book.action";
 
 @Component({
   selector: 'app-books-page',
@@ -20,6 +24,7 @@ export class BooksPageComponent implements OnInit {
   filterText: string;
 
   constructor(
+    private store: Store<AppState>,
     private booksService: BooksService,
     private filterPipe: FilterPipe
   ) { }
@@ -27,14 +32,16 @@ export class BooksPageComponent implements OnInit {
 
   ngOnInit() {
     this.date = new Date('08-08-2018');
-    this.booksService.getBooks()
+    // this.books$ = this.store.select(store => store.books.books);
+    this.store.dispatch(new booksActions.LoadBooks());
+    this.store.select(store => store.books.books)
       .subscribe(
-      (books: Book[]) => {
-        this.books = books;
-        this.allBooks = books.slice();
-      }, (err: any) => {
-        console.log(err);
-      }
+        (books: Book[]) => {
+          this.books = books;
+          this.allBooks = books.slice();
+        }, (err: any) => {
+          console.log(err);
+        }
       );
   }
 

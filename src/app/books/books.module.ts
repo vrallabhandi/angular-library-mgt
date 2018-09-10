@@ -11,6 +11,10 @@ import { HighlighterDirective } from "../directives/highlighter/highlighter.dire
 import { ShortenPipe } from "../pipes/shorten/shorten.pipe";
 import { HoverElementDirective } from "../directives/hover-element/hover-element.directive";
 import { HttpClientModule } from "@angular/common/http";
+import { StoreModule } from "@ngrx/store";
+import { BooksReducer } from "../store/book.reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { BookEffects } from "../store/book.effects";
 
 @NgModule({
     declarations: [
@@ -26,7 +30,11 @@ import { HttpClientModule } from "@angular/common/http";
         FormsModule,
         CommonModule,
         BooksRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        StoreModule.forRoot({
+          books: BooksReducer
+        }),
+        EffectsModule.forRoot([BookEffects])
     ],
     providers: [
         BooksService
