@@ -5,13 +5,18 @@ import { CommonModule } from "../../../node_modules/@angular/common";
 import { BooksRoutingModule } from "./books-routing.module";
 import { BookComponent } from "./book/book.component";
 import { FormsModule } from "../../../node_modules/@angular/forms";
+import { StoreModule } from "../../../node_modules/@ngrx/store";
+import { BooksReducer } from "../store/book.reducer";
 
  
   @NgModule({
     imports: [
         CommonModule,
         BooksRoutingModule,
-        FormsModule           
+        FormsModule,
+        StoreModule.forRoot({
+          books: BooksReducer
+        })       
     ],
     
     declarations: [
