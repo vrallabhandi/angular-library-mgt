@@ -1,0 +1,40 @@
+<!-- <input type="text" name="bookName" [(ngModel)]="name" #bName/>
+<button name="mybutton" (click)="checkName(bName)">click me!</button>
+<label for="name">{{name}}</label> -->
+
+<!-- <app-pipes-example></app-pipes-example> -->
+<div class="row">
+    <div class='col-sm-4'></div>
+    <div class='col-sm-4'>
+        <div class='input-group'>
+            <input type='text' class="form-control" [(ngModel)]='filterText' />
+            <div class='input-group-btn'>
+                <button type='button' class='btn btn-primary' (click)='filterBooks()'>
+                    <i class='glyphicon glyphicon-search'></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class='col-sm-4'></div>
+</div>
+
+<div class="row">
+    <div class='col-sm-4'></div>
+    <div class='col-sm-4'>
+        <div class='input-group-btn'>
+            <input type='button' class='btn btn-primary' value="Add new book" (click)='addBook()'>
+        </div>
+    </div>
+    <div class='col-sm-4'></div>
+</div>
+
+<div class="row">
+    <app-book *ngFor =  "let book of books" [book]="book"  (selected)="OnBookSelected(book)"></app-book>
+</div>
+
+<!-- <div>
+    <app-selected-book [book]="selectedBook" *ngIf="selectedBook">
+        <p>This is some nested content</p>
+    </app-selected-book>
+</div> -->
+
