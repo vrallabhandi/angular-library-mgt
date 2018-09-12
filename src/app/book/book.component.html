@@ -1,11 +1,13 @@
-<div class="col-sm-4 book-card">
-  <img [src]="book.thumbnail" [alt]="book.name" class="thumbnail">
+<div class="col-sm-4 book-card" (click)="bookClicked()">
+  <img class="thumbnail" [src]="book.thumbnail" [alt]="book.name">
   <div class="book-info">
-    <h4>{{book.name}}</h4>
+    <h4 appHoverElement>
+      {{book.name | uppercase }}
+    </h4>
     <p>
       Author: {{book.author}}
-      <br>
-      Code: {{book.code}}
+      <br> Code: {{book.code}}
     </p>
   </div>
 </div>
+

@@ -1,0 +1,28 @@
+<!-- <p>
+  books-list works!
+</p> -->
+
+
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+      <div class="input-group">
+          <input type="text" class="form-control" [(ngModel)]="filterText" />
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-primary" (click)="filterBooks()">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<hr>
+<div class="row">
+  <app-book *ngFor="let book of books" [book]="book" (selected)="onBookSelected($event)"></app-book>
+</div>
+<div class="row">
+  <app-selected-book [book]="selectedBook" *ngIf="selectedBook">
+    <p>This is some nested content</p>
+  </app-selected-book>
+</div>

@@ -1,3 +1,14 @@
 <div>
-  <app-book *ngFor="let eachbook of books" [book]="eachbook"></app-book>
+  <div class="row">
+    <a [routerLink]="['/home']">Home</a> |
+    <a [routerLink]="['/bookslist']">Books List</a> |
+    <a [routerLink]="['/contact']">Contact Us</a> |
+    <a [routerLink]="['/login']">Login</a> |
+    <a [routerLink]="['/login2']">Login</a> |
+    <a [routerLink]="['/register']">Register</a>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
 </div>
+
