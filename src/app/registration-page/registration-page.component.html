@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" name="username" required 
+    #userName="ngModel"
+               [(ngModel)]="username"
+               appInvalidName="invalid"
+    >
+  </div>
+  <div *ngIf="!userName.valid && userName.touched && userName.errors.required" class="alert alert-danger">User Name is required</div>
+  <div *ngIf="!userName.valid && userName.touched && !userName.errors.required" class="alert alert-danger">Invalid name</div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" required ngModel>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" class="form-control" id="phone" name="phone" required ngModel>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" required ngModel>
+  </div>
+  <div class="form-group">
+    <label for="confirmpassword">Confirm Password</label>
+    <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" required ngModel>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
