@@ -1,14 +1,65 @@
-<div>
-  <div class="row">
-    <a [routerLink]="['/home']">Home</a> |
-    <a [routerLink]="['/bookslist']">Books List</a> |
-    <a [routerLink]="['/contact']">Contact Us</a> |
-    <a [routerLink]="['/login']">Login</a> |
-    <a [routerLink]="['/login2']">Login</a> |
-    <a [routerLink]="['/register']">Register</a>
-  </div>
-  <div class="row">
-    <router-outlet></router-outlet>
-  </div>
+<!-- <input type="text" name="bookName" [(ngModel)]="name" #bName/>
+<button name="mybutton" (click)="checkName(bName)">click me!</button>
+<label for="name">{{name}}</label> -->
+
+<!-- <app-pipes-example></app-pipes-example>
+<div class="row">
+    <div class='col-sm-4'></div>
+    <div class='col-sm-4'>
+        <div class='input-group'>
+            <input type='text' class="form-control" [(ngModel)]='filterText' />
+            <div class='input-group-btn'>
+                <button type='button' class='btn btn-primary' (click)='filterBooks()'>
+                    <i class='glyphicon glyphicon-search'></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class='col-sm-4'></div>
 </div>
 
+<input type='button' value="Add new book" (click)='addBook()'>
+
+<div class="row">
+    <app-book *ngFor =  "let book of books" [book]="book"  (selected)="OnBookSelected(book)"></app-book>
+</div> -->
+
+<!-- <div class="row">
+    <app-book *ngFor =  "let book of books | filter: filterText: 'name'" [book]="book"  (selected)="OnBookSelected(book)"></app-book>
+</div> -->
+
+<!-- <div>
+    <app-selected-book [book]="selectedBook" *ngIf="selectedBook">
+        <p>This is some nested content</p>
+    </app-selected-book>
+</div> -->
+
+<!-- <div>
+    <div class="div">
+        <a [routerLink]='["/home"]'>Home</a> |
+        <a [routerLink]='["/contact"]'>Contacts</a> |
+        <a [routerLink]='["/bookstore"]'>Book Store</a>
+    </div>
+    <div class="div">
+        <router-outlet> </router-outlet>
+    </div>
+
+</div> -->
+
+<div style="padding:5px">
+    <ul class="nav nav-tabs">
+        <li routerLinkActive="true">
+            <a routerLink="/home">Home</a>
+        </li>
+        <li routerLinkActive="true">
+            <a routerLink="/contact">Contacts</a>
+        </li>
+        <li routerLinkActive="true">
+            <a routerLink="/bookstore">Book Store</a>
+        </li>
+        <li routerLinkActive="true">
+                <a routerLink="/login" class="pull-right">Log Out</a>
+            </li>
+    </ul>
+    <router-outlet></router-outlet>
+</div>

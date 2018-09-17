@@ -1,6 +1,6 @@
 export class Book {
-  code: string;
-  name: string;
-  thumbnail: string;
-  author: string;
-}
+    code: string;
+    author: string;
+    name: string;
+    thumbnail: string;
+  }

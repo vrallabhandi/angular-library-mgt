@@ -11,3 +11,4 @@ export const environment = {
   signUpUrl: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' + key,
   SignInUrl: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' + key
 };
+

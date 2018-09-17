@@ -1,3 +1,3 @@
 export const urls = {
-    books: 'books.json'
-};
+    books: "books.json"
+}

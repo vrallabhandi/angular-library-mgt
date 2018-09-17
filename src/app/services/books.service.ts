@@ -1,45 +1,87 @@
-import { Book } from '../models/book.model';
-import { BookService } from '../book/book.service';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Book } from '../models/book.model';
 import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/of';
-import 'rxjs';
-import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
+import { ErrorObservable } from '../../../node_modules/rxjs/observable/ErrorObservable';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import 'rxjs/Rx'
 import { urls } from '../constants/urls.constant';
+import { reject } from '../../../node_modules/@types/q';
+import { Observer } from 'rxjs/Rx';
+
+
 
 @Injectable()
 export class BooksService {
-  private books: Book[] = [{
-    code: "B001",
-    name: "Object Oriented Programming with C++",
-    thumbnail:
-      "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325975644.JPG",
-    author: "Rohit Khurana"
-  }, {
-    code: "B002",
-    name: "Data Structures using C",
-    thumbnail:
-      "https://images-na.ssl-images-amazon.com/images/I/51X%2Bh4njKZL._SX369_BO1,204,203,200_.jpg",
-    author: "E Balaguruswamy"
-  }]
+
   constructor(
-    private http:HttpClient,
-    private bookService: BookService
+    private _http: HttpClient
   ) { }
 
-  // getBooks(): Observable<Book[]> {
-  //   return Observable.of(this.books); 
-  //   //return Observable.throw('Data not found');
-  // }
+  books: Book[] = [
+    {
+      code: "B001",
+      author: "Rohit",
+      name: "C++",
+      thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325975644.jpg"
+    },
+    {
+      code: "B002",
+      author: "Lee Chao",
+      name: "Networking",
+      thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9781420091595.jpg"
+    },
+    {
+      code: "B003",
+      author: "Ashok Arora",
+      name: "Computer Fundamentals",
+      thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9789325992276.jpg"
+    },
+    {
+      code: "B004",
+      author: "Bel",
+      name: "Information Security",
+      thumbnail: "http://www.vikaspublishing.com/uploads/bookimages/vikas-books/9781420078541.jpg"
+    }
+  ];
+
+  //getBooks(): Observable<any> {
+   // return Observable.of(this.books);
+    //return new ErrorObservable("error");
+  //}
 
   getBooks(): Observable<Book[]> {
-    return this.http.get(environment.baseUrl + urls.books)
+    return this._http.get(environment.baseUrl + urls.books)
     .map(data => {
-      const books: Book[] = (<Book[]>data)
-        .sort((a: Book, b: Book) => a.name > b.name ? 1 : -1); 
+      const books = (<Book[]>data)
+      .sort((a: Book, b: Book) => a.name > b.name? 1: -1);
       return books;
-    });
+     });
+  }
+
+  getNameString() {
+    return new Promise(
+      (resolve,reject) => {
+        setTimeout(() => {
+          resolve("This is my name");
+        }, 2000);
+      }
+    );
+  }
+
+  getTimeObservable(): Observable<Date> {
+    return Observable.create(
+      (observer: Observer<Date>) => {
+        const interval = setInterval(() => {
+          observer.next(new Date());
+        }, 1000);
+
+        setTimeout(() => {
+          clearInterval(interval);
+          observer.complete();
+        }, 10000)
+      }
+    )
   }
 }

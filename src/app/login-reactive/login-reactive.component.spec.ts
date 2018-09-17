@@ -1,9 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
 import { LoginReactiveComponent } from './login-reactive.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-import {} from 'jasmine';
 
 describe('LoginReactiveComponent', () => {
   let component: LoginReactiveComponent;
@@ -12,7 +10,7 @@ describe('LoginReactiveComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginReactiveComponent ],
-      imports:[ReactiveFormsModule, FormsModule]
+      imports: [ReactiveFormsModule,FormsModule]
     })
     .compileComponents();
   }));
@@ -27,9 +25,10 @@ describe('LoginReactiveComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('your form should be valid'), () => {
-  let username = component.loginForm.controls["username"];
-  username.setValue("we");
-  expect(username.invalid).toBeTruthy();
-  };
+  fit('form should be valid',() => {
+    let username = component.loginForm.controls['username'];
+    username.setValue("we");
+
+    expect(username.invalid).toBeTruthy();
+  });
 });

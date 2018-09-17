@@ -1,0 +1,83 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">User Registration</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="form-group" [class.has-error]="signupForm.controls['firstName'].invalid 
+                            && signupForm.controls['firstName'].touched" [class.has-success]="signupForm.controls['firstName'].valid">
+        <label for="firstName" class="control-label">First Name</label>
+        <input id="firstName" type="text" class="form-control" formControlName="firstName">
+        <span class="help-block" *ngIf="signupForm.controls['firstName'].invalid && signupForm.controls['firstName'].touched">
+          Full Name is required
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" class="form-control" formControlName="lastName">
+      </div>
+
+
+      <div class="form-group" [class.has-error]="signupForm.controls['password'].invalid
+                             && signupForm.controls['password'].touched" [class.has-success]="signupForm.controls['password'].valid">
+        <label for="password" class="control-label">Password</label>
+        <input id="password" type="password" class="form-control" formControlName="password">
+        <span class="help-block" *ngIf="signupForm.controls['password'].touched 
+                    && signupForm.controls['password'].errors?.required">
+          Password is required
+        </span>
+      </div>
+
+      <div class="form-group" [class.has-error]="signupForm.controls['confirmPassword'].invalid
+                               && signupForm.controls['confirmPassword'].touched" [class.has-success]="signupForm.controls['confirmPassword'].valid">
+        <label for="confirmPassword" class="control-label">Confirm Password</label>
+        <input id="confirmPassword" type="confirmPassword" class="form-control" formControlName="confirmPassword">
+
+        <span class="help-block" *ngIf="signupForm.controls['confirmPassword'].invalid 
+                                  && signupForm.controls['confirmPassword'].touched
+                                  && signupForm.controls['confirmPassword'].value === ''">
+          Confirm Password is required
+        </span>
+        <span class="help-block" *ngIf="signupForm.controls['confirmPassword'].value !== ''
+                 && signupForm.controls['confirmPassword'].errors?.notEqual
+                 && signupForm.controls['confirmPassword'].touched">
+          Password and Confirm Password do not match
+        </span>
+      </div>
+
+
+
+      <div class="form-group" [class.has-error]="signupForm.controls['email'].invalid 
+                              && signupForm.controls['email'].touched" [class.has-success]="signupForm.controls['email'].valid">
+        <label for="email" class="control-label">Email</label>
+        <input id="email" type="text" autocomplete="off" class="form-control" formControlName="email" value=''>
+        <span class="help-block" *ngIf="signupForm.controls['email'].invalid 
+                                  && signupForm.controls['email'].touched
+                                  && signupForm.controls['email'].value ===''">
+          Email is required
+        </span>
+        <span class="help-block" *ngIf="signupForm.controls['email'].value !== ''
+                              && signupForm.controls['email'].errors?.email 
+                              && signupForm.controls['email'].touched 
+                              && signupForm.controls['email'].dirty">
+          Email is invalid
+        </span>
+      </div>
+
+      <div class="form-group" [class.has-error]="signupForm.controls['telephone'].invalid 
+                              && signupForm.controls['telephone'].touched" [class.has-success]="signupForm.controls['telephone'].valid">
+        <label for="telephone" class="control-label">Telephone Number</label>
+        <input id="telephone" type="text" class="form-control" formControlName="telephone">
+        <span class="help-block" *ngIf="signupForm.controls['telephone'].invalid && signupForm.controls['telephone'].touched">
+          Telephone Number is required
+        </span>
+      </div>
+
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-primary" type="submit" [disabled]="signupForm.invalid">Save</button>
+    </div>
+  </div>
+</form>

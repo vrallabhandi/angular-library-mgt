@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NgForm } from '../../../node_modules/@angular/forms';
+import { Route, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login-page',
@@ -8,18 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-  uname: string;
-  upassword: string;
-  constructor(private router : Router) { }
-  
+
+  constructor(private _route: Router) { }
+
   ngOnInit() {
   }
 
-  onSubmit(loginForm : NgForm){
+  onSubmit(loginForm: NgForm) {
+    console.log(loginForm);
     const loginObj = loginForm.value;
-    if(loginObj.uname === 'test'  && loginObj.password === 'test'){
-      this.router.navigate(['/home']);
+    if(loginObj.email === 'test' && loginObj.password === 'test') {
+      this._route.navigate(['/home'])
     }
   }
-
 }

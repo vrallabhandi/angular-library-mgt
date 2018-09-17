@@ -1,7 +1,41 @@
-<p appHighlighter [book]="book">
-  {{ book.author}}
+<!-- <p [ngClass]="className" appHighlighter [book]="book">
+  {{book.author}}
 </p>
-<p [ngStyle]="{ 'background-color': book.code === 'B001' ? 'cyan' : 'yellow' }">
-    {{ book.name | shorten: 10 }}
+<p [ngStyle]="{'background-color':book.code === 'B001' ? 'cyan' : 'yellow'}">
+  {{book.name | shorten: 40}}
+</p>
+<ng-content>  
+</ng-content> -->
+
+<h1>
+  <p [ngStyle]="{'background-color': code === 'B001' ? 'cyan' : 'yellow'}">
+    <b>Book Name: </b>{{name}}
   </p>
-<ng-content></ng-content>
+</h1>
+
+<h2>
+  <p [ngClass]="className">
+    <b>Author: </b>{{author}}
+  </p>
+</h2>
+
+<h3>
+  <p [ngClass]="className">
+    <b>Book Code: </b>{{code}}
+  </p>
+</h3>
+
+
+
+    <br/>
+    <br/>
+    <div class='col-sm-4'>
+        <div class='input-group-btn'>
+           <a  [routerLink]='["/bookstore"]'> <input type='button' class='btn btn-primary' value="<< Back to Book Store"></a>
+        </div>
+    </div>
+  
+
+
+<ng-content>
+</ng-content>
