@@ -1,0 +1,28 @@
+<div class="container">
+  <form [formGroup]="loginForm" novalidate (submit)="login()">
+    <label for="uname">
+      <b>Username</b>
+    </label>
+    <input type="text" placeholder="Enter Username" formControlName="username">
+
+    <div *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched" class="alert alert-danger">
+
+      <div *ngIf="loginForm.get('username').hasError('required')">
+        username is required
+      </div>
+      <div *ngIf="loginForm.get('username').hasError('minlength') && loginForm.get('username').dirty">
+        Min. length is 3!!!
+      </div>
+      <!-- <div *ngIf="loginForm.get('username').hasError('validated') && loginForm.get('username').dirty">
+        Min. length is 3!!!
+      </div> -->
+
+    </div>
+    <label for="psw">
+      <b>Password</b>
+    </label>
+    <input type="password" placeholder="Enter Password" formControlName="password">
+
+    <button type="submit">Login</button>
+  </form>
+</div>
