@@ -1,0 +1,45 @@
+<div class="col-sm-12">
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+  <div class="form-group">
+    <label for="username"><span class="text-danger">*</span>User Name:</label>
+    <input 
+      type="text" 
+      class="form-control" 
+      id="uname" 
+      name="uname" 
+      autocomplete="off"
+      #uname="ngModel" 
+      required
+      ngModel>
+      <p class="text-danger" *ngIf="loginForm.submitted && !uname.valid">User name is mandatory</p>
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input 
+      type="password" 
+      class="form-control" 
+      id="pwd" 
+      name="password" 
+      autocomplete="off"
+      required
+      ngModel>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="rememberMe" ngModel>
+      Remember me
+    </label>    
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+  <br>
+  Form: 
+  dirty: {{ loginForm.dirty }}
+  touched: {{ loginForm.touched }}
+  valid: {{ loginForm.valid }}
+  <br>
+  User Name: 
+  dirty: {{ uname.dirty }}
+  touched: {{ uname.touched }}
+  valid: {{ uname.valid }}
+</form>
+</div>

@@ -1,0 +1,14 @@
+<div class="col-sm-4 book-card" (click)="bookClicked()">
+  <img class="thumbnail" [src]="book.thumbnail" [alt]="book.name">
+  <div class="book-info">
+    <h4 appHoverElement>
+        <a [routerLink]="['/selectedbook',book.author,book.code,book.name]">
+      {{ book.name | lowercase }}
+      </a>
+    </h4>
+    <p>
+      Author: {{ book.author }}
+      <br> Code: {{ book.code }}
+    </p>
+  </div>
+</div>

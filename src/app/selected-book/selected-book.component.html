@@ -1,0 +1,22 @@
+<h1>
+    <p [ngStyle]="{'background-color': code === 'B001' ? 'cyan' : 'yellow'}">
+      <b>Book Name: </b>{{name}}
+    </p>
+  </h1>
+  
+  <h2>
+    <p [ngClass]="className">
+      <b>Author: </b>{{author}}
+    </p>
+  </h2>
+  
+  <h3>
+    <p [ngClass]="className">
+      <b>Book Code: </b>{{code}}
+    </p>
+  </h3>
+
+  <div class="row">
+      <a [routerLink]="['/bookstore']">Back</a> 
+    </div>
+<ng-content></ng-content>
