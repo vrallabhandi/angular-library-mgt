@@ -1,3 +1,17 @@
-<div>
-  <app-book *ngFor="let book of books" [book] = "book"></app-book>
+<div style="padding:5px">
+  <ul class="nav nav-tabs">
+      <li routerLinkActive="true">
+          <a routerLink="/home">Home</a>
+      </li>
+      <li routerLinkActive="true">
+          <a routerLink="/contact">Contacts</a>
+      </li>
+      <li routerLinkActive="true">
+          <a routerLink="/bookstore">Book Store</a>
+      </li>
+      <li routerLinkActive="true">
+              <a routerLink="/login" class="pull-right">Log Out</a>
+          </li>
+  </ul>
+  <router-outlet></router-outlet>
 </div>
